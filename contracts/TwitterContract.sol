@@ -31,7 +31,7 @@ contract TwitterContract{
     // tweets list
     mapping(uint => Tweet) public tweets;
 
-    // This array store the tweets'id by order
+    // This array store the tweets'id by creating record order
     uint[] private tweetsPool;
 
     // Store temporal the new generated Id
@@ -39,7 +39,6 @@ contract TwitterContract{
 
     // Mapping of TweetID to the address of the user
     mapping(uint256 => address) tweetToOwner;
-    
 
     /*
     ***  Functions Region ***    
@@ -117,9 +116,4 @@ contract TwitterContract{
         }
         return result;
     }
-
-    
-    
-    
-    
 }
