@@ -35,6 +35,41 @@
       "artifacts": [
         "TwitterContract"
       ]
+    },
+    "D:\\epita\\Homework\\TwitterProject\\contracts\\TwitterContract.sol": {
+      "lastModificationDate": 1656973273900,
+      "contentHash": "f456affc627636ed886536716ddbd85e",
+      "sourceName": "contracts/TwitterContract.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "TwitterContract"
+      ]
     }
   }
 }

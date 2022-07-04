@@ -11,19 +11,20 @@ contract TwitterContract{
         address owner;
         string tweetText;
         bool isDeleted;
+        uint256 publishedTime;
     }
 
     /*
     ***  Events Region ***    
     */ 
     // CreateTweet Event
-    event CreateTweet(uint tweetID,address owner,string tweetText,bool isDeleted);
+    event CreateTweet(uint tweetID,address owner,string tweetText,bool isDeleted, uint256 publishedTime);
 
     // UpdateTweet Event 
-    event UpdateTweet(uint tweetID,address owner,string tweetText,bool isDeleted);
+    event UpdateTweet(uint tweetID,address owner,string tweetText,bool isDeleted, uint256 publishedTime);
 
     // DeleteTweet Event
-    event DeleteTweet(uint tweetID,bool isDeleted);
+    event DeleteTweet(uint tweetID,bool isDeleted, uint256 publishedTime);
 
     /*
     ***  Variables Region ***    
@@ -57,10 +58,10 @@ contract TwitterContract{
     function createTweet(string memory _tweetText) public {
         uint _tweetID = random();
         tempNewId = _tweetID;
-        tweets[_tweetID] = Tweet(_tweetID, msg.sender, _tweetText, false);
+        tweets[_tweetID] = Tweet(_tweetID, msg.sender, _tweetText, false, block.timestamp);
         tweetsPool.push(_tweetID);
         tweetToOwner[_tweetID] = msg.sender;
-        emit CreateTweet(_tweetID, msg.sender, _tweetText, false);        
+        emit CreateTweet(_tweetID, msg.sender, _tweetText, false, block.timestamp);        
     }
 
     // Update a Tweet
@@ -70,7 +71,7 @@ contract TwitterContract{
             "You are not tweet owner"
         );
         tweets[_tweetID].tweetText = _tweetText;
-        emit UpdateTweet(_tweetID, msg.sender, _tweetText, false);      
+        emit UpdateTweet(_tweetID, msg.sender, _tweetText, false, block.timestamp);      
     }
 
     // Deleted a Tweet
@@ -80,7 +81,7 @@ contract TwitterContract{
             "You are not tweet owner"
         );
         tweets[_tweetID].isDeleted = true;
-        emit DeleteTweet(_tweetID, true);
+        emit DeleteTweet(_tweetID, true, block.timestamp);
     }
 
     // Get all the tweets
